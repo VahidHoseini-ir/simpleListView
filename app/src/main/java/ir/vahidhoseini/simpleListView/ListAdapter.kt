@@ -47,8 +47,8 @@ class ListAdapter(names: ArrayList<StructList>, context: Context) : RecyclerView
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): PersonViewHolder {
-        val lytInflater = ctx.getSystemService(LAYOUT_INFLATER_SERVICE)
-        val view =lytInflater.from(viewGroup.context).inflate(R.layout.adapternote, viewGroup, false)
+        val lytInflater = LayoutInflater.from(ctx)
+        val view =lytInflater.inflate(R.layout.lyt_adapter_list, viewGroup, false)
         return PersonViewHolder(view)
     }
 
