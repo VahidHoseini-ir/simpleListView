@@ -18,25 +18,30 @@ import java.util.*
 /**
  * Created by Vahid on 4/26/2016.
  */
-class ListAdapter(context:Context) :
+class ListAdapter(context: Context) :
     RecyclerView.Adapter<ListAdapter.ItemViewHolder>() {
     private var recyclerview: RecyclerView? = null
     private var layoutManager: RecyclerView.LayoutManager? = null
 
-    fun setRecylcerView(rclview: RecyclerView): ListAdapter {
-        recyclerview = rclview
+    fun setRecylcerView(value: RecyclerView): ListAdapter {
+        recyclerview = value
         return this
     }
 
-    fun setLayoutManager(lytmanger: RecyclerView.LayoutManager):ListAdapter{
-        layoutManager = lytmanger
+    fun setLayoutManager(value: RecyclerView.LayoutManager): ListAdapter {
+        layoutManager = value
         return this
     }
-    fun setListItems(data:  ArrayList<StructList>): ListAdapter {
-        items = data
+
+    fun setListItems(value: ArrayList<StructList>): ListAdapter {
+        items = value
         return this
     }
-    fun initialAdapter(){
+
+
+    fun initialAdapter() {
+        recyclerview?.layoutManager = layoutManager
+        recyclerview?.adapter = this
 
     }
 

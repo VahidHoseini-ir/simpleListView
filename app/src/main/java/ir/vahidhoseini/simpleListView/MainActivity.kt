@@ -20,15 +20,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val recyclerview: RecyclerView = findViewById(R.id.test_recyclerview)
-        recyclerview.setHasFixedSize(true)
-
+//        recyclerview.setHasFixedSize(true)
+//        recyclerview.layoutManager = manager
         val manager = LinearLayoutManager(this)
         manager.orientation = LinearLayoutManager.VERTICAL
-        recyclerview.layoutManager = manager
+
         populateData()
-        val adapter = ListAdapter(myList, this)
-        recyclerview.adapter = adapter
+        ListAdapter(this).setListItems(myList)
+            .setRecylcerView(findViewById(R.id.test_recyclerview))
+            .setLayoutManager(manager)
+            .initialAdapter()
+
+
     }
 
     private fun populateData() {
