@@ -4,6 +4,7 @@ package ir.vahidhoseini.simpleListView
 import android.content.Context
 import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.graphics.Color
+import android.icu.lang.UCharacter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.core.content.getSystemService
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.security.Provider
 import java.util.*
@@ -22,6 +24,10 @@ class ListAdapter(context: Context) :
     RecyclerView.Adapter<ListAdapter.ItemViewHolder>() {
     private var recyclerview: RecyclerView? = null
     private var layoutManager: RecyclerView.LayoutManager? = null
+
+//    val manager = LinearLayoutManager(this)
+//    manager.orientation = LinearLayoutManager.VERTICAL
+
 
     fun setRecylcerView(value: RecyclerView): ListAdapter {
         recyclerview = value
@@ -40,9 +46,14 @@ class ListAdapter(context: Context) :
 
 
     fun initialAdapter() {
-        recyclerview?.layoutManager = layoutManager
+        if (layoutManager != null) {
+            recyclerview?.layoutManager = this.layoutManager
+        } else {
+            val manager = LinearLayoutManager(ctx)
+            manager.orientation = LinearLayoutManager.VERTICAL
+            recyclerview?.layoutManager = manager
+        }
         recyclerview?.adapter = this
-
     }
 
     override fun getItemCount(): Int {

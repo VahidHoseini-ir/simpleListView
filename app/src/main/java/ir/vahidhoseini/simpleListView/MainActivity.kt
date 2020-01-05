@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         populateData()
         ListAdapter(this).setListItems(myList)
             .setRecylcerView(findViewById(R.id.test_recyclerview))
-            .setLayoutManager(manager)
             .initialAdapter()
 
 
