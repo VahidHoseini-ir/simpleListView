@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerview: RecyclerView = findViewById(R.id.test_recyclerview)
         recyclerview.setHasFixedSize(true)
+
         val manager = LinearLayoutManager(this)
         manager.orientation = LinearLayoutManager.VERTICAL
         recyclerview.layoutManager = manager

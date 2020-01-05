@@ -18,8 +18,27 @@ import java.util.*
 /**
  * Created by Vahid on 4/26/2016.
  */
-class ListAdapter(items: ArrayList<StructList>, context: Context) :
+class ListAdapter(context:Context) :
     RecyclerView.Adapter<ListAdapter.ItemViewHolder>() {
+    private var recyclerview: RecyclerView? = null
+    private var layoutManager: RecyclerView.LayoutManager? = null
+
+    fun setRecylcerView(rclview: RecyclerView): ListAdapter {
+        recyclerview = rclview
+        return this
+    }
+
+    fun setLayoutManager(lytmanger: RecyclerView.LayoutManager):ListAdapter{
+        layoutManager = lytmanger
+        return this
+    }
+    fun setListItems(data:  ArrayList<StructList>): ListAdapter {
+        items = data
+        return this
+    }
+    fun initialAdapter(){
+
+    }
 
     override fun getItemCount(): Int {
         return items.size;
@@ -30,9 +49,7 @@ class ListAdapter(items: ArrayList<StructList>, context: Context) :
 
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var btnAdapter: Button? = null
         var txtAdapter: TextView = itemView.findViewById(R.id.item_title)
-        var chkAdapter: CheckBox? = null
     }
 
     init {
@@ -49,7 +66,14 @@ class ListAdapter(items: ArrayList<StructList>, context: Context) :
     override fun onBindViewHolder(personViewHolder: ItemViewHolder, i: Int) {
         val item: StructList = items.get(i)
         personViewHolder.txtAdapter.setText(item.title);
-        personViewHolder.txtAdapter.setBackgroundColor(Color.argb(255,Random().nextInt(256), Random().nextInt(256), Random().nextInt(256)))
+        personViewHolder.txtAdapter.setBackgroundColor(
+            Color.argb(
+                255,
+                Random().nextInt(256),
+                Random().nextInt(256),
+                Random().nextInt(256)
+            )
+        )
     }
 
 
