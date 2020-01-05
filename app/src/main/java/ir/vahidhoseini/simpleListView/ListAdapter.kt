@@ -18,27 +18,20 @@ import java.util.ArrayList
 /**
  * Created by Vahid on 4/26/2016.
  */
-class ListAdapter(items: ArrayList<StructList>, context: Context) :
-    RecyclerView.Adapter<ListAdapter.ItemViewHolder>() {
+class ListAdapter(items: ArrayList<StructList>, context: Context) :RecyclerView.Adapter<ListAdapter.ItemViewHolder>() {
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return items.size;
     }
 
     private var items = ArrayList<StructList>()
     private var ctx = context
 
-//    val itemCount: Int
-//        get() = items.size
 
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //            btnAdapter = (Button) itemView.findViewById(R.id.btnAdapter);
-        //            txtAdapter = (TextView) itemView.findViewById(R.id.txtAdapter);
-        //            chkAdapter = (CheckBox) itemView.findViewById(R.id.chkAdapter);
-        protected var btnAdapter: Button? = null
-        protected var txtAdapter: TextView? = null
-        protected var chkAdapter: CheckBox? = null
+         var btnAdapter: Button? = null
+         var txtAdapter: TextView = itemView.findViewById(R.id.item_title)
+         var chkAdapter: CheckBox? = null
     }
 
     init {
@@ -48,14 +41,14 @@ class ListAdapter(items: ArrayList<StructList>, context: Context) :
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ItemViewHolder {
         val lytInflater:LayoutInflater = LayoutInflater.from(ctx)
-        lytInflater.inflate(R.layout.activity_main , viewGroup)
         var view = lytInflater.inflate(R.layout.lyt_adapter_list, viewGroup, false) as View
         return ItemViewHolder(view)
     }
 
     override fun onBindViewHolder(personViewHolder: ItemViewHolder, i: Int) {
-        //        StructList name = items.get(i);
-        //        personViewHolder.txtAdapter.setText(name.firstName);
+                val item:StructList = items.get(i)
+                personViewHolder.txtAdapter.setText(item.title);
+
         //        personViewHolder.chkAdapter.setText(name.lastName);
         //        personViewHolder.btnAdapter.setText(""+name.age);
     }
